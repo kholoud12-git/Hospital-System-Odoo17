@@ -1,0 +1,72 @@
+<odoo>
+    <record id="hospital_nurse_tree_view" model="ir.ui.view">
+        <field name="name">hospital.nurse.view.tree</field>
+        <field name="model">hospital.nurse</field>
+        <field name="arch" type="xml">
+            <tree string="nurses">
+                <field name="ref"/>
+                <field name="name"/>
+                <field name="department_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_nurse_form_view" model="ir.ui.view">
+        <field name="name">hospital.nurse.view.form</field>
+        <field name="model">hospital.nurse</field>
+        <field name="arch" type="xml">
+            <form string="nurse">
+                <header>
+                    <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="ref"/>
+                        <h1>
+                            <field name="ref"/>
+                        </h1>
+                    </div>
+                   <group>
+                       <group>
+                           <field name="name" />
+                           <field name="department_id" />
+                           <field name="mobile" />
+                       </group>
+                       <group>
+                           <field name="shift_start" />
+                           <field name="shift_end" />
+                           <field name="assigned_patient" widget="many2many_tags"/>
+                       </group>
+                   </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_nurse_search_view" model="ir.ui.view">
+        <field name="name">hospital.nurse.search</field>
+        <field name="model">hospital.nurse</field>
+        <field name="arch" type="xml">
+            <search string="nurses">
+                <field name="name"/>
+
+
+                <filter name="group_name" string="nurse Name" context="{'group_by':'name'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="hospital_nurse_action" model="ir.actions.act_window">
+        <field name="name">Nurse</field>
+        <field name="res_model">hospital.nurse</field>
+    </record>
+
+    <menuitem
+            id="hospital_nurse_menu_item"
+            name="Nurse"
+            parent="main_menu_conf_department"
+            action="hospital_nurse_action"
+    />
+
+</odoo>

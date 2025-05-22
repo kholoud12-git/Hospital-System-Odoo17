@@ -1,0 +1,63 @@
+<odoo>
+    <record id="hospital_admission_tree_view" model="ir.ui.view">
+        <field name="name">hospital.admission.view.tree</field>
+        <field name="model">hospital.admission</field>
+        <field name="arch" type="xml">
+            <tree string="admissions">
+                <field name="patient_id"/>
+                <field name="admission_date"/>
+                <field name="discharge_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_admission_form_view" model="ir.ui.view">
+        <field name="name">hospital.admission.view.form</field>
+        <field name="model">hospital.admission</field>
+        <field name="arch" type="xml">
+            <form string="admission">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="admission_date"/>
+                            <field name="discharge_date"/>
+                        </group>
+                        <group>
+                            <field name="room_number"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="reason" />
+                    </group>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_admission_search_view" model="ir.ui.view">
+        <field name="name">hospital.admission.search</field>
+        <field name="model">hospital.admission</field>
+        <field name="arch" type="xml">
+            <search string="admissions">
+                <field name="patient_id"/>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="hospital_admission_action" model="ir.actions.act_window">
+        <field name="name">Admission</field>
+        <field name="res_model">hospital.admission</field>
+    </record>
+
+    <menuitem
+            id="hospital_admission_menu_item"
+            name="Admissions"
+            parent="main_menu_conf_admission"
+            action="hospital_admission_action"
+    />
+
+</odoo>

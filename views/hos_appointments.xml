@@ -1,0 +1,116 @@
+<odoo>
+    <record id="hospital_appointment_calendar_view" model="ir.ui.view">
+        <field name="name">hospital.appointment.view</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments" color="doctor_id"
+                      quick_create="False" date_start="appointment_date">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+            </calendar>
+        </field>
+    </record>
+    <record id="hospital_appointment_tree_view" model="ir.ui.view">
+        <field name="name">hospital.appointment.view.tree</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="Appointments">
+                <field name="ref"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="department_id"/>
+                <field name="appointment_date"/>
+                <field name="appointment_time"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_appointment_form_view" model="ir.ui.view">
+        <field name="name">hospital.appointment.view.form</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Appointments">
+                <header>
+                    <button name="print_prescription_report" string="Print Prescription Card" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="ref"/>
+                        <h1>
+                            <field name="ref"/>
+                        </h1>
+                        <label for="patient_id"/>
+                        <h1>
+                            <field name="patient_id"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="doctor_id"/>
+                            <field name="appointment_date"/>
+                            <field name="appointment_time"/>
+                        </group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="patient_status"/>
+                            <field name="room_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="symptoms"/>
+                        <field name="diagnosis"/>
+                        <field name="prescription"/>
+                        <field name="total_medicine_qty"/>
+
+                    </group>
+                    <notebook>
+                        <page string="Medicines">
+                            <field name="medicine_line_ids">
+                                <tree editable="bottom">
+                                    <field name="medicine_id"/>
+                                    <field name="tax_ids"/>
+                                    <field name="quantity"/>
+                                    <field name="doze_per_day"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Comments">
+                            <group>
+                                <field name="comments" nolabel="1" colspan="2"/>
+                            </group>
+                        </page>
+
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_appointment_search_view" model="ir.ui.view">
+        <field name="name">hospital.appointment.search</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <search string="Appointments">
+                <field name="patient_id"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="hospital_appointment_action" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <menuitem
+            id="hospital_appointment_menu_item"
+            name="Appointments"
+            parent="appointments_menu"
+            action="hospital_appointment_action"
+    />
+
+</odoo>

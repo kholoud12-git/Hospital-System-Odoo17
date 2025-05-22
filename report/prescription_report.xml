@@ -1,0 +1,121 @@
+<odoo>
+    <record id="prescription_report" model="ir.actions.report">
+        <field name="name">Prescription Report</field>
+        <field name="model">hospital.appointment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hospital_management.print_prescription_card</field>
+        <field name="report_file">hospital_management.print_prescription_card</field>
+        <field name="print_report_name">'Prescription Card - %s' % (object.ref).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_hospital_appointment"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="print_prescription_card">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <h1 style="text-align:center;">
+                        Prescription Report
+                    </h1>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th>Appointment ID</th>
+                                <th>Appointment Date</th>
+                                <th>Doctor Name</th>
+                                <th>Patient Contact Information</th>
+                                <th>Total Medicines</th>
+
+                            </tr>
+                            <tr style="text-align:center;">
+                                <td>
+                                    <t t-esc="doc.ref"/>
+                                </td>
+                                <td>
+                                    <t t-esc="doc.appointment_date"/>
+                                </td>
+                                <td>
+                                    <t t-esc="doc.doctor_id.name"/>
+                                </td>
+                                <td>
+                                    <t t-esc="doc.patient_id.name"/>
+                                </td>
+                                <td>
+                                    <t t-esc="doc.total_medicine_qty"/>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <h3 style="text-align:center;">
+                        Medicine Card
+                    </h3>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Medicine</th>
+                            <th>Quantity</th>
+                            <th>Doze Per Day</th>
+                            <th>Tax</th>
+                        </tr>
+                        <tbody>
+                            <t t-foreach="doc.medicine_line_ids" t-as="m">
+
+                                <tr>
+
+                                    <td>
+                                        <t t-esc="m.medicine_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="m.quantity"/>
+                                    </td>
+                                     <td>
+                                        <t t-esc="m.doze_per_day"/>
+                                    </td>
+                                     <td>
+                                        <t t-esc="m.tax_ids.name"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br/>
+
+                    <div style="margin:20px;">
+                        <span style="font-weight:bold;">Symptoms:</span>
+                        <span>
+                            <t t-esc="doc.symptoms"/>
+                        </span>
+                    </div>
+
+                    <div style="margin:20px;">
+                        <span style="font-weight:bold;">Diagnosis:</span>
+                        <span>
+                            <t t-esc="doc.diagnosis"/>
+                        </span>
+                    </div>
+
+                    <div style="margin:20px;">
+                        <span style="font-weight:bold;">Prescription:</span>
+                        <span>
+                            <t t-esc="doc.prescription"/>
+                        </span>
+                    </div>
+
+                    <div style="margin:20px;">
+                        <span style="font-weight:bold;">Notes:</span>
+                        <span>
+                            <t t-esc="doc.comments"/>
+                        </span>
+                    </div>
+
+                    <div style="margin:20px;">
+                        <span style="font-weight:bold;">Doctor Signature:</span>
+                        <span></span>
+                    </div>
+                </t>
+            </t>
+
+        </t>
+    </template>
+</odoo>

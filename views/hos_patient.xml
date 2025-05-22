@@ -1,0 +1,133 @@
+<odoo>
+    <record id="hospital_patient_tree_view" model="ir.ui.view">
+        <field name="name">hospital.patient.view.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patients">
+                <field name="name"/>
+                <field name="ref"/>
+                <field name="date_of_birth"/>
+                <field name="marital_status"/>
+                <field name="sex"/>
+                <field name="address"/>
+                <field name="national_id"/>
+                <field name="insurance_policy_number"/>
+                <field name="email"/>
+                <field name="blood_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_patient_form_view" model="ir.ui.view">
+        <field name="name">hospital.patient.view.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <header>
+                    <button name="print_patient" string="Print Patient Card" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <field name="photo" widget='image' class="oe_avatar m-0"/>
+                    <div class="oe_title">
+                        <label for="ref" nolabel="1"/>
+                        <h1>
+                            <field name="ref" nolabel="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_of_birth"/>
+                            <field name="marital_status"/>
+                            <field name="email"/>
+                            <field name="national_id"/>
+                        </group>
+                        <group>
+                            <field name="sex"/>
+                            <field name="patient_age"/>
+                            <field name="address"/>
+                            <field name="phone"/>
+                            <field name="insurance_policy_number"/>
+                        </group>
+                    </group>
+                    <group>
+                        <separator colspan="4" string="Patient Critical Information"/>
+                        <newline/>
+                        <field colspan="2" name="patient_critical_information" nolabel="1"/>
+                    </group>
+                    <notebook>
+                        <page string="General Information ">
+                            <group string="Patient General Information">
+                                <group>
+                                    <field name="blood_type"/>
+                                </group>
+                                <group>
+                                    <field name="rh_type"/>
+                                </group>
+                            </group>
+                            <group string="Patient Extra Information">
+                                <group>
+                                    <field colspan="2" name="extra_information" nolabel="1"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="deceased"/>
+                                <field name="deceased_date" invisible="deceased != True"/>
+                                <field name="cause_death" invisible="deceased != True"/>
+                            </group>
+
+                        </page>
+                        <page string="Medication ">
+                            <field name="medication_id">
+                                <tree>
+                                    <field name="ref"/>
+                                    <field name="name"/>
+                                    <field name="is_active"/>
+                                    <field name="price"/>
+                                    <field name="quantity"/>
+                                    <field name="expiry_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"
+                           groups="base.group_no_ne"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_patient_search_view" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Patients">
+                <field name="name"/>
+                <field name="ref"/>
+
+                <filter name="sex_female" string="Female" domain="[('sex','=','female')]"/>
+
+                <filter name="group_sex" string="Sex" context="{'group_by':'sex'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="hospital_patient_action" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+<!--        <field name="domain">[('sex', '=', 'female')]</field>-->
+        <field name="res_model">hospital.patient</field>
+    </record>
+
+    <menuitem
+            id="hospital_patient_menu_item"
+            name="Patients"
+            parent="patient_menu"
+            action="hospital_patient_action"
+    />
+
+</odoo>

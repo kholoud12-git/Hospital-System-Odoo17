@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--Department-->
+        <record id="dep_emergency" model="hospital.department">
+            <field name="name">Emergency Department (ED)</field>
+            <field name="manager_name" ref=""/>
+
+        </record>
+
+        <record id="dep_ICU" model="hospital.department">
+            <field name="name">Intensive Care Unit (ICU)</field>
+
+
+        </record>
+
+        <record id="dep_OPD" model="hospital.department">
+            <field name="name">Outpatient Department (OPD)</field>
+
+
+        </record>
+
+        <record id="dep_OR" model="hospital.department">
+            <field name="name">Surgery / Operating Room (OR)</field>
+
+
+        </record>
+
+        <record id="dep_Radiology" model="hospital.department">
+            <field name="name">Radiology / Imaging Department</field>
+
+
+        </record>
+
+        <record id="dep_Cardiology" model="hospital.department">
+            <field name="name">Cardiology</field>
+
+
+        </record>
+
+        <record id="dep_Neurology" model="hospital.department">
+            <field name="name">Neurology</field>
+
+
+        </record>
+
+        <record id="dep_Oncology" model="hospital.department">
+            <field name="name">Oncology</field>
+
+
+        </record>
+
+        <record id="dep_Pediatrics" model="hospital.department">
+            <field name="name">Pediatrics</field>
+
+
+        </record>
+
+        <record id="dep_GYN" model="hospital.department">
+            <field name="name">Obstetrics and Gynecology (OB/GYN)</field>
+
+
+        </record>
+
+        <record id="dep_Orthopedics" model="hospital.department">
+            <field name="name">Orthopedics</field>
+
+
+        </record>
+
+        <record id="dep_internal_medicine" model="hospital.department">
+            <field name="name">Internal Medicine</field>
+
+
+        </record>
+
+        <record id="dep_Kidney" model="hospital.department">
+            <field name="name">Nephrology (Kidney care)</field>
+
+
+        </record>
+
+        <record id="dep_Gastroenterology" model="hospital.department">
+            <field name="name">Gastroenterology</field>
+
+
+        </record>
+
+        <record id="dep_Dermatology" model="hospital.department">
+            <field name="name">Dermatology</field>
+
+
+        </record>
+
+        <record id="dep_Psychiatry" model="hospital.department">
+            <field name="name">Psychiatry</field>
+
+
+        </record>
+
+        <record id="dep_Anesthesiology" model="hospital.department">
+            <field name="name">Anesthesiology</field>
+
+
+        </record>
+
+        <record id="dep_Laboratory" model="hospital.department">
+            <field name="name">Laboratory</field>
+
+
+        </record>
+
+        <record id="dep_Pharmacy" model="hospital.department">
+            <field name="name">Pharmacy</field>
+
+
+        </record>
+
+        <record id="dep_Urology" model="hospital.department">
+            <field name="name">Urology</field>
+
+
+        </record>
+
+        <record id="dep_Pulmonology" model="hospital.department">
+            <field name="name">Pulmonology</field>
+
+
+        </record>
+
+        <record id="dep_Endocrinology" model="hospital.department">
+            <field name="name">Endocrinology</field>
+
+
+        </record>
+
+        <record id="dep_Physical" model="hospital.department">
+            <field name="name">Physical Therapy</field>
+
+
+        </record>
+
+        <record id="dep_Infectious" model="hospital.department">
+            <field name="name">Infectious Diseases</field>
+
+
+        </record>
+
+        <record id="dep_Geriatrics" model="hospital.department">
+            <field name="name">Geriatrics</field>
+
+
+        </record>
+
+        <!--Nurse        -->
+        <record id="nur_1" model="hospital.nurse">
+            <field name="name">Sara</field>
+            <field name="department_id" ref="dep_Geriatrics"/>
+        </record>
+
+        <record id="nur_2" model="hospital.nurse">
+            <field name="name">Aya</field>
+            <field name="department_id" ref="dep_Infectious"/>
+        </record>
+
+        <record id="nur_3" model="hospital.nurse">
+            <field name="name">Hala</field>
+            <field name="department_id" ref="dep_emergency"/>
+        </record>
+
+        <record id="nur_4" model="hospital.nurse">
+            <field name="name">Salma</field>
+            <field name="department_id" ref="dep_ICU"/>
+        </record>
+
+        <record id="nur_5" model="hospital.nurse">
+            <field name="name">Ali</field>
+            <field name="department_id" ref="dep_OPD"/>
+        </record>
+
+        <record id="nur_6" model="hospital.nurse">
+            <field name="name">Zein</field>
+            <field name="department_id" ref="dep_Cardiology"/>
+        </record>
+
+        <record id="nur_7" model="hospital.nurse">
+            <field name="name">Ayman</field>
+            <field name="department_id" ref="dep_Neurology"/>
+        </record>
+
+        <record id="nur_8" model="hospital.nurse">
+            <field name="name">Waled</field>
+            <field name="department_id" ref="dep_Oncology"/>
+        </record>
+
+        <record id="nur_9" model="hospital.nurse">
+            <field name="name">Kholoud</field>
+            <field name="department_id" ref="dep_GYN"/>
+        </record>
+
+        <record id="nur_10" model="hospital.nurse">
+            <field name="name">Mai</field>
+            <field name="department_id" ref="dep_Orthopedics"/>
+        </record>
+
+        <!-- Doctor       -->
+<!--        <record id="doc_1" model="hospital.doctor">-->
+<!--            <field name="name">Sara</field>-->
+<!--            <field name="department_id" ref="dep_Geriatrics"/>-->
+<!--        </record>-->
+
+<!--        <record id="doc_2" model="hospital.doctor">-->
+<!--            <field name="name">Aya</field>-->
+<!--            <field name="department_id" ref="dep_Infectious"/>-->
+<!--        </record>-->
+
+<!--        <record id="doc_3" model="hospital.doctor">-->
+<!--            <field name="name">Hala</field>-->
+<!--            <field name="department_id" ref="dep_emergency"/>-->
+<!--        </record>-->
+
+<!--        <record id="doc_4" model="hospital.doctor">-->
+<!--            <field name="name">Salma</field>-->
+<!--            <field name="department_id" ref="dep_ICU"/>-->
+<!--        </record>-->
+
+<!--        <record id="doc_5" model="hospital.doctor">-->
+<!--            <field name="name">Ali</field>-->
+<!--            <field name="department_id" ref="dep_OPD"/>-->
+<!--        </record>-->
+
+<!--        <record id="doc_6" model="hospital.doctor">-->
+<!--            <field name="name">Zein</field>-->
+<!--            <field name="department_id" ref="dep_Cardiology"/>-->
+<!--        </record>-->
+
+<!--        <record id="doc_7" model="hospital.doctor">-->
+<!--            <field name="name">Ayman</field>-->
+<!--            <field name="department_id" ref="dep_Neurology"/>-->
+<!--        </record>-->
+
+<!--        <record id="doc_8" model="hospital.doctor">-->
+<!--            <field name="name">Waled</field>-->
+<!--            <field name="department_id" ref="dep_Oncology"/>-->
+<!--        </record>-->
+
+<!--        <record id="doc_9" model="hospital.doctor">-->
+<!--            <field name="name">Kholoud</field>-->
+<!--            <field name="department_id" ref="dep_GYN"/>-->
+<!--        </record>-->
+
+<!--        <record id="doc_10" model="hospital.doctor">-->
+<!--            <field name="name">Mai</field>-->
+<!--            <field name="department_id" ref="dep_Orthopedics"/>-->
+
+<!--        </record>-->
+
+        <!--Operation Room        -->
+<!--        <record id="op1" model="hospital.operation.room">-->
+<!--            <field name="department_id" ref="dep_Infectious"/>-->
+<!--            <field name="is_available">True</field>-->
+<!--            <field name="room_type">single</field>-->
+<!--        </record>-->
+
+<!--        <record id="op2" model="hospital.operation.room">-->
+<!--            <field name="department_id" ref="dep_emergency"/>-->
+<!--            <field name="is_available">True</field>-->
+<!--            <field name="room_type">double</field>-->
+<!--        </record>-->
+
+<!--        <record id="op3" model="hospital.operation.room">-->
+<!--            <field name="department_id" ref="dep_ICU"/>-->
+<!--            <field name="is_available">False</field>-->
+<!--            <field name="room_type">double</field>-->
+<!--        </record>-->
+
+<!--        <record id="op4" model="hospital.operation.room">-->
+<!--            <field name="department_id" ref="dep_Cardiology"/>-->
+<!--            <field name="is_available">True</field>-->
+<!--            <field name="room_type">single</field>-->
+<!--        </record>-->
+
+<!--        <record id="op5" model="hospital.operation.room">-->
+<!--            <field name="department_id" ref="dep_Oncology"/>-->
+<!--            <field name="is_available">False</field>-->
+<!--            <field name="room_type">double</field>-->
+<!--        </record>-->
+
+<!--        <record id="op6" model="hospital.operation.room">-->
+<!--            <field name="department_id" ref="dep_GYN"/>-->
+<!--            <field name="is_available">True</field>-->
+<!--            <field name="room_type">single</field>-->
+<!--        </record>-->
+
+<!--        <record id="op7" model="hospital.operation.room">-->
+<!--            <field name="name">Ayman</field>-->
+<!--            <field name="is_available">True</field>-->
+<!--            <field name="room_type">single</field>-->
+<!--        </record>-->
+
+<!--        <record id="op8" model="hospital.operation.room">-->
+<!--            <field name="department_id" ref="dep_Orthopedics"/>-->
+<!--            <field name="is_available">False</field>-->
+<!--            <field name="room_type">single</field>-->
+<!--        </record>-->
+
+<!--        <record id="op9" model="hospital.operation.room">-->
+<!--            <field name="department_id" ref="dep_ICU"/>-->
+<!--            <field name="is_available">True</field>-->
+<!--            <field name="room_type">single</field>-->
+<!--        </record>-->
+
+<!--        <record id="op10" model="hospital.operation.room">-->
+<!--            <field name="department_id" ref="dep_OPD"/>-->
+<!--            <field name="is_available">True</field>-->
+<!--            <field name="room_type">double</field>-->
+<!--        </record>-->
+    </data>
+</odoo>

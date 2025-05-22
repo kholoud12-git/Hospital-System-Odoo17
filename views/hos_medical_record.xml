@@ -1,0 +1,58 @@
+<odoo>
+    <record id="hospital_medical_record_tree_view" model="ir.ui.view">
+        <field name="name">hospital.medical.record.view.tree</field>
+        <field name="model">hospital.medical.record</field>
+        <field name="arch" type="xml">
+            <tree string="medical_records">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="record_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_medical_record_form_view" model="ir.ui.view">
+        <field name="name">hospital.medical.record.view.form</field>
+        <field name="model">hospital.medical.record</field>
+        <field name="arch" type="xml">
+            <form string="medical_record">
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="doctor_id"/>
+                        <field name="diagnosis"/>
+                        <field name="record_date"/>
+                        <field name="prescription"/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_medical_record_search_view" model="ir.ui.view">
+        <field name="name">hospital.medical.record.search</field>
+        <field name="model">hospital.medical.record</field>
+        <field name="arch" type="xml">
+            <search string="medical_records">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="record_date"/>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="hospital_medical_record_action" model="ir.actions.act_window">
+        <field name="name">Medical Record</field>
+        <field name="res_model">hospital.medical.record</field>
+    </record>
+
+    <menuitem
+            id="hospital_medical_record_menu_item"
+            name="Medical Record"
+            parent="patient_menu"
+            action="hospital_medical_record_action"
+    />
+
+</odoo>

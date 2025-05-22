@@ -1,0 +1,188 @@
+<odoo>
+    <record id="patient_report" model="ir.actions.report">
+        <field name="name">Patient Report</field>
+        <field name="model">hospital.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hospital_management.print_patient_card</field>
+        <field name="report_file">hospital_management.print_patient_card</field>
+        <field name="print_report_name">'Patient Card - %s' % (object.patient).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="print_patient_card">
+        <!-- v.i to use  html_container  this normal page   -->
+        <t t-call="web.html_container">
+            <!--   external_layout this add to page header footer pingation          -->
+            <!--   basic_layout this used to add custom style for page not has header or footer of odoo        -->
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <h1 style="text-align:center;">
+                        Patient Card
+                    </h1>
+                    <table class="table table-striped">
+                        <thead>
+                            <th colspan="4">General Information</th>
+                        </thead>
+                        <tbody>
+                            <!-- t-field => if i have relation field this get name like xml not name.fieldname and in money field t-esc = field.fieldname and normal field                         -->
+                            <tr>
+                                <th>Name</th>
+                                <td>
+                                    <t t-esc="doc.patient"/>
+                                </td>
+                                <th>ref</th>
+                                <td>
+                                    <t t-esc="doc.ref"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Date Of Birthday</th>
+                                <td>
+                                    <t t-esc="doc.patient_age"/>
+                                </td>
+                                <th>Marital Status</th>
+                                <td>
+                                    <t t-esc="doc.marital_status"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Sex</th>
+                                <td>
+                                    <t t-esc="doc.sex"/>
+                                </td>
+                                <th>Address</th>
+                                <td>
+                                    <t t-esc="doc.address"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Blood Type</th>
+                                <td>
+                                    <t t-esc="doc.blood_type"/>
+                                </td>
+                                <th>RH Type</th>
+                                <td>
+                                    <t t-esc="doc.rh_type"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Deceased</th>
+                                <td>
+                                    <t t-esc="doc.deceased"/>
+                                </td>
+                                <th>Extra Information</th>
+                                <td>
+                                    <t t-esc="doc.extra_information"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <table class="table table-striped">
+                        <thead>
+                            <th colspan="4">Medication</th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.medication_id" t-as="m">
+                                <tr>
+                                    <th>Name</th>
+                                    <td>
+                                        <t t-esc="m.medication_name"/>
+                                    </td>
+                                    <th>ref</th>
+                                    <td>
+                                        <t t-esc="m.ref"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Start Of Treatment</th>
+                                    <td>
+                                        <t t-esc="m.start_treatment"/>
+                                    </td>
+                                    <th>End Of Treatment</th>
+                                    <td>
+                                        <t t-esc="m.end_treatment"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Dose</th>
+                                    <td>
+                                        <t t-esc="m.dose"/>
+                                    </td>
+                                    <th>Dose Unit</th>
+                                    <td>
+                                        <t t-esc="m.dose_unit"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Treatment Duration</th>
+                                    <td>
+                                        <t t-esc="m.treatment_duration"/>
+                                    </td>
+                                    <th>Treatment Period</th>
+                                    <td>
+                                        <t t-esc="m.treatment_period"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Comments</th>
+                                    <td colspan="3">
+                                        <t t-esc="m.comments"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <table class="table table-striped ">
+                        <thead>
+                            <th colspan="4">Vaccination</th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.vaccination_id" t-as="vac">
+                                <tr>
+                                    <th>Name</th>
+                                    <td>
+                                        <t t-esc="vac.vaccination_name"/>
+                                    </td>
+                                    <th>ref</th>
+                                    <td>
+                                        <t t-esc="vac.ref"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <td>
+                                        <t t-esc="vac.date"/>
+                                    </td>
+                                    <th>Expiration Date</th>
+                                    <td>
+                                        <t t-esc="vac.expiration_date"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Dose</th>
+                                    <td>
+                                        <t t-esc="vac.dose"/>
+                                    </td>
+                                    <th>Next Dose</th>
+                                    <td>
+                                        <t t-esc="vac.next_dose"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Observations</th>
+                                    <td colspan="3">
+                                        <t t-esc="vac.observations"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+
+        </t>
+    </template>
+</odoo>

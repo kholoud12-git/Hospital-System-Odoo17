@@ -1,0 +1,72 @@
+<odoo>
+    <record id="hospital_department_tree_view" model="ir.ui.view">
+        <field name="name">hospital.department.view.tree</field>
+        <field name="model">hospital.department</field>
+        <field name="arch" type="xml">
+            <tree string="departments">
+                <field name="ref"/>
+                <field name="name"/>
+                <field name="manager_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_department_form_view" model="ir.ui.view">
+        <field name="name">hospital.department.view.form</field>
+        <field name="model">hospital.department</field>
+        <field name="arch" type="xml">
+            <form string="department">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="ref"/>
+                        <h1>
+                            <field name="ref"/>
+                        </h1>
+                    </div>
+                   <group>
+                       <group>
+                           <field name="name" />
+                           <field name="manager_name" />
+                           <field name="description" />
+                       </group>
+                   </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"
+                           groups="base.group_no_ne"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_department_search_view" model="ir.ui.view">
+        <field name="name">hospital.department.search</field>
+        <field name="model">hospital.department</field>
+        <field name="arch" type="xml">
+            <search string="departments">
+                <field name="name"/>
+                <field name="ref"/>
+
+
+                <filter name="group_name" string="Department Name" context="{'group_by':'name'}"/>
+                <filter name="group_manager_name" string="Manager Name" context="{'group_by':'manager_name'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="hospital_department_action" model="ir.actions.act_window">
+        <field name="name">Department</field>
+        <field name="res_model">hospital.department</field>
+    </record>
+
+    <menuitem
+            id="hospital_department_menu_item"
+            name="Departments"
+            parent="departments_menu"
+            action="hospital_department_action"
+    />
+
+</odoo>

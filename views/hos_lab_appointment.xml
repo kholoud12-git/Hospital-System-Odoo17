@@ -1,0 +1,59 @@
+<odoo>
+    <record id="hospital_lab_appointment_tree_view" model="ir.ui.view">
+        <field name="name">hospital.lab.appointment.view.tree</field>
+        <field name="model">hospital.lab.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="lab_appointments">
+                <field name="patient_id"/>
+                <field name="test_type"/>
+                <field name="lab_technician_id"/>
+                <field name="appointment_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_lab_appointment_form_view" model="ir.ui.view">
+        <field name="name">hospital.lab.appointment.view.form</field>
+        <field name="model">hospital.lab.appointment</field>
+        <field name="arch" type="xml">
+            <form string="lab_appointment">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="lab_technician_id"/>
+                            <field name="appointment_date"/>
+                        </group>
+                        <group>
+                            <field name="test_type"/>
+                        </group>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_lab_appointment_search_view" model="ir.ui.view">
+        <field name="name">hospital.lab.appointment.search</field>
+        <field name="model">hospital.lab.appointment</field>
+        <field name="arch" type="xml">
+            <search string="lab_appointments">
+                <field name="patient_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="hospital_lab_appointment_action" model="ir.actions.act_window">
+        <field name="name">Lab Appointment</field>
+        <field name="res_model">hospital.lab.appointment</field>
+    </record>
+
+    <menuitem
+            id="hospital_lab_appointment_menu_item"
+            name="Lab Appointment"
+            parent="main_menu_conf_department"
+            action="hospital_lab_appointment_action"
+    />
+
+</odoo>

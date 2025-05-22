@@ -1,0 +1,88 @@
+<odoo>
+    <record id="hospital_operation_room_tree_view" model="ir.ui.view">
+        <field name="name">hospital.operation.room.view.tree</field>
+        <field name="model">hospital.operation.room</field>
+        <field name="arch" type="xml">
+            <tree string="operation_rooms">
+                <field name="ref"/>
+                <field name="department_id"/>
+                <field name="is_available"/>
+                <field name="bed_count"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_operation_room_form_view" model="ir.ui.view">
+        <field name="name">hospital.operation.room.view.form</field>
+        <field name="model">hospital.operation.room</field>
+        <field name="arch" type="xml">
+            <form string="operation_rooms">
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                     <div class="oe_title">
+                        <label for="ref"/>
+                        <h1>
+                            <field name="ref"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="occupied_bed_count"/>
+                            <field name="is_available"/>
+                            <field name="bed_count"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Appointments">
+                            <field name="appointment_ids" >
+                                <tree editable="bottom">
+                                    <field name="ref"/>
+                                    <field name="doctor_id"/>
+                                    <field name="appointment_date"/>
+                                    <field name="appointment_time"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids"
+                           groups="base.group_no_ne"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_operation_room_search_view" model="ir.ui.view">
+        <field name="name">hospital.operation.room.search</field>
+        <field name="model">hospital.operation.room</field>
+        <field name="arch" type="xml">
+            <search string="operation_rooms">
+                <field name="ref"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="hospital_operation_room_action" model="ir.actions.act_window">
+        <field name="name">Operation Room</field>
+        <field name="res_model">hospital.operation.room</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="hospital_operation_room_menu_item"
+            name="Operation Room"
+            parent="rooms_menu"
+            action="hospital_operation_room_action"
+    />
+
+</odoo>

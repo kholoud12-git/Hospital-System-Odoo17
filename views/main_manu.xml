@@ -1,0 +1,64 @@
+<odoo>
+    <menuitem
+            id="hospital_management_system_root"
+            name="Hospital Management"
+    />
+     <menuitem
+            id="patient_menu"
+            name="Patients"
+            parent="hospital_management_system_root"
+    />
+    <menuitem
+            id="appointments_menu"
+            name="Appointments"
+            parent="hospital_management_system_root"
+    />
+    <menuitem
+            id="departments_menu"
+            name="Departments"
+            parent="hospital_management_system_root"
+    />
+     <menuitem
+            id="doctors_menu"
+            name="Doctors"
+            parent="hospital_management_system_root"
+    />
+     <menuitem
+            id="rooms_menu"
+            name="Rooms"
+            parent="hospital_management_system_root"
+    />
+     <menuitem
+            id="medicines_menu"
+            name="Medicines"
+            parent="hospital_management_system_root"
+    />
+    <menuitem
+            id="lab_menu"
+            name="Laboratory"
+            parent="hospital_management_system_root"
+    />
+    <menuitem
+            id="configuration_menu"
+            name="Configuration"
+            parent="hospital_management_system_root"
+    />
+    <menuitem name="Laboratory"
+              id="main_menu_conf_laboratory"
+              parent="configuration_menu"
+    />
+
+    <menuitem name="Health"
+              id="main_menu_conf_department"
+              parent="configuration_menu"
+    />
+    <menuitem name="Medications"
+              id="main_menu_conf_medication"
+              parent="configuration_menu"
+    />
+    <menuitem name="Admission"
+              id="main_menu_conf_admission"
+              parent="configuration_menu"
+    />
+
+</odoo>

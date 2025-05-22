@@ -1,0 +1,63 @@
+<odoo>
+    <record id="hospital_monthly_report_tree_view" model="ir.ui.view">
+        <field name="name">hospital.monthly.report.view.tree</field>
+        <field name="model">hospital.monthly.report</field>
+        <field name="arch" type="xml">
+            <tree string="monthly_reports">
+                <field name="report_month"/>
+                <field name="total_patient"/>
+                <field name="total_appointment"/>
+                <field name="total_income"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_monthly_report_form_view" model="ir.ui.view">
+        <field name="name">hospital.monthly.report.view.form</field>
+        <field name="model">hospital.monthly.report</field>
+        <field name="arch" type="xml">
+            <form string="monthly_report">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="report_month"/>
+                            <field name="total_patient"/>
+                            <field name="total_appointment"/>
+                            <field name="total_income"/>
+                        </group>
+                        <group>
+                            <field name="total_expenses"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Common Disease">
+                            <group>
+                                <field name="most_common_disease"/>
+                            </group>
+                        </page>
+                        <page string="Notes">
+                            <group>
+                                <field name="notes"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="hospital_monthly_report_action" model="ir.actions.act_window">
+        <field name="name">Monthly Report</field>
+        <field name="res_model">hospital.monthly.report</field>
+    </record>
+
+    <menuitem
+            id="hospital_monthly_report_menu_item"
+            name="Monthly Report"
+            parent="main_menu_conf_admission"
+            action="hospital_monthly_report_action"
+    />
+
+</odoo>
